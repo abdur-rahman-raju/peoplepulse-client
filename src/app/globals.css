@@ -1,26 +1,62 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin "daisyui" {
+  themes: false;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@plugin "daisyui/theme" {
+  name: "pulse-light";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: #fbfcfc;
+  --color-base-200: #eef3f3;
+  --color-base-300: #dbe5e5;
+  --color-base-content: #12292b;
+  --color-primary: #0f766e;
+  --color-primary-content: #f0fdfa;
+  --color-secondary: #f2674a;
+  --color-secondary-content: #fff5f2;
+  --color-accent: #f5b83d;
+  --color-accent-content: #2a1d00;
+  --color-neutral: #12292b;
+  --color-neutral-content: #e6f0f0;
+  --color-info: #2a7fb8;
+  --color-success: #2e9d5b;
+  --color-warning: #e09a1a;
+  --color-error: #d6453d;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@plugin "daisyui/theme" {
+  name: "pulse-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #0e1a1b;
+  --color-base-200: #142526;
+  --color-base-300: #1f3638;
+  --color-base-content: #e3efef;
+  --color-primary: #3fbfb3;
+  --color-primary-content: #052321;
+  --color-secondary: #ff8a70;
+  --color-secondary-content: #2e0d05;
+  --color-accent: #f7c85c;
+  --color-accent-content: #261b00;
+  --color-neutral: #091213;
+  --color-neutral-content: #d4e4e4;
+  --color-info: #6bb4dd;
+  --color-success: #5fcb8a;
+  --color-warning: #f0ae3c;
+  --color-error: #ee7a72;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--color-base-100);
+  color: var(--color-base-content);
 }
