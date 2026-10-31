@@ -4,6 +4,7 @@ import { jwt } from "better-auth/plugins";
 import { MongoClient } from "mongodb";
 
 const globalForMongo = globalThis;
+
 const client =
   globalForMongo._pulseMongoClient ?? new MongoClient(process.env.MONGODB_URI);
 
@@ -21,5 +22,19 @@ export const auth = betterAuth({
     enabled: true,
     minPasswordLength: 6,
   },
+
+  account: {
+    accountLinking: {
+      enabled: true,
+      trustedProviders: ["github"],
+    },
+  },
+  socialProviders: {
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    },
+  },
+
   plugins: [jwt()],
 });
