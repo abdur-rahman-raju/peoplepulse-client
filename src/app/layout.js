@@ -1,5 +1,6 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -11,7 +12,7 @@ export const metadata = {
   description: "Organise and join social service events in your neighbourhood.",
 };
 
-// পেজ আঁকার আগেই সেভ করা theme বসিয়ে দেয়, তাই reload দিলে রঙ ঝিলিক দেয় না
+
 const themeScript = `
   try {
     var saved = localStorage.getItem("pulse-theme");
@@ -26,7 +27,10 @@ export default function RootLayout({ children }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${geist.variable} antialiased`}>{children}</body>
+      <body className={`${geist.variable} antialiased`}>
+  <Navbar />
+  <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+</body>
     </html>
   );
 }
