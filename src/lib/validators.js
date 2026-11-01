@@ -39,3 +39,44 @@ export function formatDate(iso) {
     year: "numeric",
   });
 }
+
+export function tomorrowISO() {
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+export function validateEvent(f) {
+  const errors = {};
+
+  if (f.title.trim().length < 5 || f.title.trim().length > 100) {
+    errors.title = "Title must be 5 to 100 characters";
+  }
+  if (f.description.trim().length < 20 || f.description.trim().length > 1500) {
+    errors.description = "Description must be 20 to 1500 characters";
+  }
+  if (!EVENT_TYPES.includes(f.eventType)) {
+    errors.eventType = "Please choose an event type";
+  }
+  if (!isHttpUrl(f.thumbnail.trim())) {
+    errors.thumbnail = "Enter a valid image URL starting with http or https";
+  }
+  if (f.location.trim().length < 3) {
+    errors.location = "Please enter the location";
+  }
+  if (!f.eventDate) {
+    errors.eventDate = "Please choose a date";
+  } else if (f.eventDate < tomorrowISO()) {
+    errors.eventDate = "Event date must be in the future";
+  }
+
+  const n = Number(f.volunteersNeeded);
+  if (!Number.isInteger(n) || n < 1 || n > 5000) {
+    errors.volunteersNeeded = "Enter a whole number from 1 to 5000";
+  }
+
+  return errors;
+}
