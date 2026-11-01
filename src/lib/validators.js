@@ -1,3 +1,14 @@
+export const EVENT_TYPES = [
+  "Clothes Distribution",
+  "Food Distribution",
+  "Cleanup",
+  "Plantation",
+  "Blood Donation",
+  "Health Camp",
+  "Education",
+  "Other",
+];
+
 export function isHttpUrl(value) {
   try {
     const url = new URL(value);
