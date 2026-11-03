@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PeoplePulse
 
-## Getting Started
+**Every neighbourhood has a pulse.** PeoplePulse is a community platform where people organise and join social-service events such as winter clothes drives, food kitchens, cleanups and plantations.
 
-First, run the development server:
+**Live site:** https://peoplepulse-client-884h.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Create events with a type, location, thumbnail, volunteer target and a future-only date
+- Join any upcoming event once, with live volunteer-spot counts, and leave again if plans change
+- Manage Events page to view, edit and delete only the events you created
+- Joined Events page listing everything you signed up for, sorted by date
+- Email and password sign-up with password rules, plus GitHub login, using Better Auth and JWT-protected API routes
+- Search and filter upcoming events by type, with loading skeletons
+- Light and dark theme toggle and a fully responsive layout
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tech stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Next.js (App Router), Tailwind CSS with DaisyUI, Better Auth with the MongoDB adapter and JWT, Express.js and MongoDB.
 
-## Learn More
+## Run locally
 
-To learn more about Next.js, take a look at the following resources:
+1. Run `npm install`
+2. Create a `.env.local` file with your own MongoDB, Better Auth and GitHub OAuth values
+3. Run `npm run dev`
+4. Open http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The Express server must also be running (see the server repository).
